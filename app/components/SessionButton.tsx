@@ -8,19 +8,17 @@ export function SessionButton() {
 		signIn("cognito");
 	};
 	const handleSignOut = () => {
-		signOut();
+		signOut({ callbackUrl: "signout" });
 	};
 
 	if (status === "loading") {
 		return <div className="mx-auto">Loading...</div>;
 	}
 
-
 	return (
 		<button
 			type="button"
 			onClick={status !== "authenticated" ? handleSignIn : handleSignOut}
-
 		>
 			{status !== "authenticated" ? "ログイン" : "ログアウト"}
 		</button>
